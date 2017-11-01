@@ -22,8 +22,12 @@ public class RequestDispatch {
 
     private int position = 0;
 
+    /**
+     * 随机分配流量
+     * @return
+     */
     public String getServerByRandom() {
-        Map<String, Integer> currentServerMap = serverMap;
+        Map<String, Integer> currentServerMap = Collections.unmodifiableMap(serverMap);
 
         List<String> serverList = new ArrayList<String>(currentServerMap.keySet());
 
@@ -31,6 +35,10 @@ public class RequestDispatch {
         return serverList.get(serverIndex);
     }
 
+    /**
+     * 随机获取指定权重的流量
+     * @return
+     */
     public String getServerByAssiginProportionRandom() {
         Map<String, Integer> currentServerMap = serverMap;
 
@@ -50,6 +58,10 @@ public class RequestDispatch {
 
     }
 
+    /**
+     * 轮询获取指定权重的流量
+     * @return
+     */
     public String getServerByAssiginProportionPoll() {
         Map<String, Integer> currentServerMap = serverMap;
 
@@ -69,6 +81,10 @@ public class RequestDispatch {
         return server;
     }
 
+    /**
+     * 随机获取指定权重的流量
+     * @return
+     */
     public String getServerByAssiginProportion() {
         Map<String, Integer> currentServerMap = serverMap;
 
